@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> {%block title%} {%endblock%}</title>
+     {% load static %}
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'sidebar.css'%}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+      <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">Vehicular Data <br>Bank</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <a href="/index">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+             <span class="tooltip">Dashboard</span>
+          </li>
+          <li>
+           <a href="{% url 'view_car'%}">
+             <i class='bx bxs-car' ></i>
+             <span class="links_name">View Cars</span>
+           </a>
+           <span class="tooltip">View Cars</span>
+         </li>
+         <li>
+           <a href="{% url 'add_car'%}">
+             <i class='bx bx-cog' ></i>
+             <span class="links_name">Add Car</span>
+           </a>
+           <span class="tooltip">Add Car</span>
+         </li>
+         <li class="profile">
+             <div class="profile-details">
+                 <i class="bx bx-user-circle" alt="profileImg"></i>
+               <div class="name_job">
+                <!-- put name here-->
+                 <div class="name">{{user.username}}</div>
+<!--                 <div class="job">DEVELOPER</div>-->
+               </div>
+             </div>
+             <a class="logout" href="{% url 'logout_user'%}">
+                <i class='bx bx-log-out' id="log_out" ></i>
+             </a>
+         </li>
+        </ul>
+      </div>
+      <section class="home-section">
+          {%block content%}
+
+            {%endblock%}
+      </section>
+
+      <script src="{% static 'sidebar.js'%}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

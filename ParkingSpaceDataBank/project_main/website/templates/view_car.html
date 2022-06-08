@@ -1,0 +1,47 @@
+{% extends './sidebar.html'%}
+{%block title%} View Cars {%endblock%}
+{% block content %}
+
+    <div class="text"> Cars </div>
+    <style>
+        .card {
+            width: 80%;
+        }
+
+        @media screen and (min-width: 1200px){
+            .card {
+                width: 50%;
+            }
+        }
+
+
+
+        @media screen and (min-width: 900px){
+            .card {
+                width: 30%;
+            }
+        }
+
+
+
+    </style>
+    <div class="container" style="margin-left: 30px;">
+         {% for car in car_list %}
+
+        <div class="card border-secondary mb-4">
+              <h5 class="card-header text-bg-secondary">Plate#: {{ car.plate_num }} </h5>
+              <div class="card-body">
+                    <h5 class="card-title">{{ car.car_manufacturer }} - {{ car.car_model }}</h5>
+                    <h5 class="card-text">Color: {{ car.car_color }}</h5>
+                    <a href="#" class="btn btn-danger">Delete</a>
+              </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+    <div class="container">
+    </div>
+
+{% endblock %}
