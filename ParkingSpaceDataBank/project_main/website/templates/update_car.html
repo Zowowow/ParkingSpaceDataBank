@@ -1,0 +1,49 @@
+{% extends './sidebar.html'%}
+{%block title%} Update Cars {%endblock%}
+{% block content %}
+
+
+
+    <div class="text"> Update a car </div>
+
+    <style>
+        .card {
+            width: 30%;
+            margin-left: 40px;
+        }
+
+        @media screen and (max-width: 1200px){
+            .card {
+                width: 40%;
+            }
+        }
+
+
+
+        @media screen and (max-width: 900px){
+            .card {
+                width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 600px){
+            .card {
+                width: 80%;
+            }
+        }
+    </style>
+
+    <div class="card border-secondary">
+              <h5 class="card-header text-bg-secondary">Add a Car</h5>
+              <div class="card-body">
+                  <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                  </form>
+
+              </div>
+    </div>
+
+
+{% endblock %}

@@ -11,6 +11,27 @@ from .main_app import VideoCamera
 # Create your views here.
 
 
+# For deleting car
+@login_required(login_url="/login_user")
+def delete_car(request, car_id):
+    car = Car.objects.get(pk=car_id)
+    car.delete()
+    messages.success(request, ("A car is successfully deleted"))
+    return redirect('view_car')
+
+
+# For updating car
+@login_required(login_url="/login_user")
+def update_car(request, car_id):
+    car = Car.objects.get(pk=car_id)
+    form = AddCarForm(request.POST or None, instance=car)
+    if form.is_valid():
+        form.save()
+        messages.success(request, ("A car is successfully updated"))
+        return redirect('view_car')
+
+    return render(request, 'update_car.html', {'car': car, 'form': form})
+
 # For adding car
 @login_required(login_url="/login_user")
 def add_car(request):

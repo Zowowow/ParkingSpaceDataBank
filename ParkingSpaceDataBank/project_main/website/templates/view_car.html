@@ -25,6 +25,12 @@
 
 
     </style>
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
     <div class="container" style="margin-left: 30px;">
          {% for car in car_list %}
 
@@ -33,7 +39,9 @@
               <div class="card-body">
                     <h5 class="card-title">{{ car.car_manufacturer }} - {{ car.car_model }}</h5>
                     <h5 class="card-text">Color: {{ car.car_color }}</h5>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'update_car' car.id %}" class="btn btn-success">Update</a>
+                    <a href="{% url 'delete_car' car.id %}" class="btn btn-danger">Delete</a>
+
               </div>
         </div>
 
