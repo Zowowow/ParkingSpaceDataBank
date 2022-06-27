@@ -11,6 +11,7 @@ from .main_app import VideoCamera
 # Create your views here.
 
 
+
 # For deleting car
 @login_required(login_url="/login_user")
 def delete_car(request, car_id):

@@ -1,46 +1,24 @@
-{% extends './sidebar.html'%}
+{% extends './header.html'%}
 {%block title%} View Cars {%endblock%}
+{% block header %} View Cars {% endblock %}
 {% block content %}
 
-    <div class="text"> Cars </div>
-    <style>
-        .card {
-            width: 80%;
-        }
-
-        @media screen and (min-width: 1200px){
-            .card {
-                width: 50%;
-            }
-        }
-
-
-
-        @media screen and (min-width: 900px){
-            .card {
-                width: 30%;
-            }
-        }
-
-
-
-    </style>
-        {% for message in messages %}
+        <!-- {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {% endfor %}
-    <div class="container" style="margin-left: 30px;">
-         {% for car in car_list %}
+        {% endfor %} -->
 
-        <div class="card border-secondary mb-4">
-              <h5 class="card-header text-bg-secondary">Plate#: {{ car.plate_num }} </h5>
-              <div class="card-body">
-                    <h5 class="card-title">{{ car.car_manufacturer }} - {{ car.car_model }}</h5>
-                    <h5 class="card-text">Color: {{ car.car_color }}</h5>
-                    <a href="{% url 'update_car' car.id %}" class="btn btn-success">Update</a>
-                    <a href="{% url 'delete_car' car.id %}" class="btn btn-danger">Delete</a>
+    <div id="content-view-car">
+         {% for car in car_list %}
+        <div class="car-items">
+              <h3 class="plate-num">Plate#: {{ car.plate_num }} </h3>
+              <div class="">
+                    <h5 class="car-man">{{ car.car_manufacturer }} - {{ car.car_model }}</h5>
+                    <h5 class="car-col">Color: {{ car.car_color }}</h5>
+                    <a href="{% url 'update_car' car.id %}" class="btn success">Update</a>
+                    <a href="{% url 'delete_car' car.id %}" class="btn delete">Delete</a>
 
               </div>
         </div>

@@ -1,60 +1,40 @@
-{% extends './sidebar.html'%}
+{% extends './header.html'%}
 {%block title%} Dashboard {%endblock%}
+{% block header %} Dashboard {% endblock %}
 {% block content %}
-    <style>
-
-    .text{
-        display: inline-block;
-        color: #11101d;
-        font-size: 25px;
-        font-weight: 500;
-        margin: 18px;
-    }
-    .video_cam{
-        display: flex;
-        align-content: center;
-        justify-content: left;
-    }
-    .video_cam img{
-        border-style: solid;
-        border-radius: 5px;
-        background-color: white;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        height: auto;
-        padding: 10px;
-    }
-
-    .container {
-        margin-left: 3%;
-    }
-
-    @media screen and (min-width:1200px){
-        .video_cam img {
-            width: 50%;
-        }
-    }
-
-    @media screen and (min-width:900px){
-        .video_cam img {
-            width: 50%;
-        }
-    }
-
-
-</style>
-    <div class="text"> Dashboard </div>
-    <div class="container">
-        {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{message}}
-                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    {% endfor %}
-                 {% endif %}
-
-    <div class="video_cam"><img src="{% url 'video_feed' %}"/></div>
+<!-- {% if messages %}
+{% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+{% endfor %}
+{% endif %} -->
 
+    <!-- Camera Section-->
+    <div id="content-index">
+        <div class="left">
+            <img src="{% url 'video_feed' %}"/>
+            <a class="button-primary">PARK IN</a>
+        </div>            
+        <div class="right">
+            <!-- Table Section-->
+            <h3>Recent Activities</h3>
+            <ul class="table">
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                <li>sample</li>
+                
+            </ul>
+        </div>
+    </div>
 {% endblock %}

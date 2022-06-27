@@ -1,51 +1,20 @@
-{% extends './sidebar.html'%}
+{% extends './header.html'%}
 {%block title%} Add Cars {%endblock%}
+{% block header %} Add Cars  {% endblock %}
 {% block content %}
 
-
-
-    <div class="text"> Add a car </div>
-
-    <style>
-        .card {
-            width: 30%;
-            margin-left: 40px;
-        }
-
-        @media screen and (max-width: 1200px){
-            .card {
-                width: 40%;
-            }
-        }
-
-
-
-        @media screen and (max-width: 900px){
-            .card {
-                width: 50%;
-            }
-        }
-
-        @media screen and (max-width: 600px){
-            .card {
-                width: 80%;
-            }
-        }
-    </style>
-
-    {% if submitted %}
+    <!-- {% if submitted %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             A car is successfully added
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    {% endif %}
-    <div class="card border-secondary">
-              <h5 class="card-header text-bg-secondary">Add a Car</h5>
-              <div class="card-body">
+    {% endif %} -->
+    <div id="content-add-car">
+              <div class="adding-car">
                   <form action="" method="POST">
                         {% csrf_token %}
                         {{ form }}
-                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                      <button type="submit" class="btn btn-success btn-block submit">Submit</button>
                   </form>
 
               </div>

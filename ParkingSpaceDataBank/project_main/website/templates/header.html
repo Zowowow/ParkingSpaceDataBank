@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <title>{%block title%} {%endblock%}</title>
+</head>
+
+<body>
+    
+    <section>
+        <header>
+             <nav>
+                <ul>
+                    <div>
+                        <div id="left-nav">
+                        <li><a href="{% url 'index'%}"><i class='bx bxs-home bx-sm'></i>
+                            <span class="tooltip">Home</span>
+                            </a>
+                        </li>
+                        <li><a href="{% url 'view_car'%}"><i class='bx bxs-car bx-sm' ></i>
+                            <span class="tooltip settings">View Cars</span>
+                            </a>
+                        </li>
+                        <li><a href="{% url 'add_car'%}"><i class='bx bxs-brightness bx-sm user'></i>
+                            <span class="tooltip settings">Add Cars</span>
+                            </a>
+                        </li>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="right-nav">
+                            <li><a href="{% url 'index'%}">{{user.username}}</a></li>
+                            <li><a href="{% url 'logout_user'%}"><i class='bx bx-log-out bx-sm' ></i>
+                                <span class="tooltip">Logout</span>
+                                </a>
+                            </li>
+                            
+                            <li><a href="javascript:void(0);" class="icon" onclick="burgerFunction()">
+                                <i class='bx bx-menu bx-sm'></i>
+                                </a></li>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+            <h1>{% block header %} {% endblock %}</h1>
+        </header>
+
+
+        {% block content %}
+        {% endblock %}
+
+        
+    <footer>
+        <div id="soc-med">
+            <ul>
+                <li><i class='bx bxl-facebook-circle bx-sm'></i></li>
+                <li><i class='bx bxl-twitter bx-sm' ></i></li>
+                <li><i class='bx bxl-linkedin-square bx-sm' ></i></li>
+            </ul>
+            <div class="copyright">
+                <i class='bx bxs-copyright bx-sm' ></i>
+                 <p>Vehicular Data Bank</p>
+            </div>
+        </div>
+    </footer>
+    </section>
+    
+    <script>
+    function burgerFunction() {
+      var x = document.getElementById("left-nav");
+      if (x.style.display === "flex") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "flex";
+      }
+    }
+    </script>
+</body>
+</html>
