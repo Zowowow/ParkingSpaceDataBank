@@ -16,6 +16,8 @@ class VideoCamera(object):
         with open("website/CarParkPos", "rb") as f:
             posList = pickle.load(f)
 
+        spaceCounter = 0
+        
         width, height = 100, 50
 
         success, frame = self.video.read()
@@ -36,16 +38,17 @@ class VideoCamera(object):
             count = cv2.countNonZero(cv2.Canny(frameCrop, 100, 200))
             cvzone.putTextRect(frame, str(count), (x, y + height - 3), scale=1, thickness=2, offset=0)
 
-            if count < 600:
+            if count < 200:
                 color = (0, 255, 0)
                 thickness = 3
+                spaceCounter += 1
             else:
                 color = (0, 0, 255)
                 thickness = 2
 
             cv2.rectangle(frame, pos, (pos[0] + width, pos[1] + height), color, thickness)
         
-        cvzone.putTextRect(frame, f'Free: {count}/{len(posList)}', (250, 40), scale=2, thickness=2, offset=20, colorR = (0, 200, 0))
+        cvzone.putTextRect(frame, f'Free: {spaceCounter}/{len(posList)}', (250, 40), scale=2, thickness=2, offset=20, colorR = (0, 200, 0))
 
         #cv2.imshow("Frame", frame)
         #cv2.waitKey(1)
