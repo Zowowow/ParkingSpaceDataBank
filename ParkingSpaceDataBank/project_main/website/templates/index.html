@@ -15,26 +15,43 @@
     <div id="content-index">
         <div class="left">
             <img src="{% url 'video_feed' %}"/>
-            <a class="button-primary">PARK IN</a>
+            <form method="post" name="timeinn">
+              {% csrf_token%}
+              <button type="submit"  class="btn btn-success" name="timeinn" value="timeinn">PARK IN</button>
+              <!-- <button type="submit"  class="btn btn-danger" name="timeout" value="timeout">DEPART</button>-->
+          </form>
+
+          <form method="post" name="timeout">
+            {% csrf_token%}
+            <button type="submit"  class="btn btn-danger" name="timeout" value="timeout">PARK OUT</button>
+            <!-- <button type="submit"  class="btn btn-danger" name="timeout" value="timeout">DEPART</button>-->
+        </form>
         </div>            
         <div class="right">
             <!-- Table Section-->
-            <h3>Recent Activities</h3>
-            <ul class="table">
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                <li>sample</li>
-                
-            </ul>
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col" >Activity</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Name</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for timestamp in timestamps%}
+                  <tr>
+                    
+                    <td>{{timestamp.activity}}</td>
+                    <td> {{timestamp.datestamp}} {{timestamp.timestamp}} </td>
+                    <td>{{timestamp.Parker.username}}</td>
+                    
+                  </tr>
+                  {% endfor %}
+                  
+                </tbody>
+              </table>
         </div>
     </div>
 {% endblock %}

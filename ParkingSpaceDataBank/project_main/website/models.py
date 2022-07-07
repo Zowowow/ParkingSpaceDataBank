@@ -14,3 +14,11 @@ class Car(models.Model):
     def __str__(self):
         return self.car_model
 
+class TimeStamps(models.Model):
+    Parker = models.ForeignKey(User, default="",on_delete=models.CASCADE, null=True)
+    activity = models.CharField('Car Name', max_length=120)
+    timestamp = models.TimeField(auto_now_add= True)
+    datestamp = models.DateField(auto_now_add= True)
+    
+    def __str__(self):
+        return self.Parker + "\n" + self.activity

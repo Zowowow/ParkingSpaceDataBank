@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.http.response import StreamingHttpResponse
 from .models import Car
+from .models import TimeStamps
 from .forms import RegisterUserForm, AddCarForm
 from .main_app import VideoCamera
 
@@ -62,9 +63,35 @@ def view_car(request):
 def dashboard(request):
     return render(request, "index.html")
 
+
 @login_required(login_url="/login_user")
 def index(request):
-    return render(request, "index.html")
+    timestamps = TimeStamps.objects.all().order_by("-timestamp")[0:10]
+
+    if request.method == 'POST':
+         if request.POST.get("timeinn"):
+           
+            savetimein = TimeStamps()
+            savetimein.Parker = request.user
+            savetimein.activity = "Park In"
+            
+            savetimein.save()
+            return redirect('index')
+
+
+         elif request.POST.get("timeout"):
+           
+            savetimein = TimeStamps()
+            savetimein.Parker = request.user
+            savetimein.activity = "Park Out"
+            
+            savetimein.save()
+            return redirect('index')
+
+
+            
+
+    return render(request, "index.html", {"timestamps": timestamps})
 
 
 def login_user(request):

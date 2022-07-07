@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'style.css'%}">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>{%block title%} {%endblock%}</title>
 </head>
@@ -41,7 +42,7 @@
                                 </a>
                             </li>
                             
-                            <li><a href="javascript:void(0);" class="icon" onclick="burgerFunction()">
+                            <li><a href="javascript:void(1);" class="icon" onclick="burgerFunction()">
                                 <i class='bx bx-menu bx-sm'></i>
                                 </a></li>
                         </div>
@@ -72,6 +73,7 @@
     </section>
     
     <script>
+
     function burgerFunction() {
       var x = document.getElementById("left-nav");
       if (x.style.display === "flex") {
@@ -80,6 +82,12 @@
         x.style.display = "flex";
       }
     }
+
+    function demoDisplay() {
+        document.getElementById("park01").style.display = "none";
+    }
+
     </script>
+
 </body>
 </html>

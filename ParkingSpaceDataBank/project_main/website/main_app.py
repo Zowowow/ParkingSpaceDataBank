@@ -44,6 +44,8 @@ class VideoCamera(object):
                 thickness = 2
 
             cv2.rectangle(frame, pos, (pos[0] + width, pos[1] + height), color, thickness)
+        
+        cvzone.putTextRect(frame, f'Free: {count}/{len(posList)}', (250, 40), scale=2, thickness=2, offset=20, colorR = (0, 200, 0))
 
         #cv2.imshow("Frame", frame)
         #cv2.waitKey(1)
