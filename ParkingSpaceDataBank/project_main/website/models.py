@@ -20,5 +20,4 @@ class TimeStamps(models.Model):
     timestamp = models.TimeField(auto_now_add= True)
     datestamp = models.DateField(auto_now_add= True)
     
-    def __str__(self):
-        return self.Parker + "\n" + self.activity
+    
