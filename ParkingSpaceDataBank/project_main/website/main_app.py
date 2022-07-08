@@ -7,7 +7,7 @@ class VideoCamera(object):
 
     def __init__(self):
         #video feed
-        self.video = cv2.VideoCapture("website/car-parking.mp4")
+        self.video = cv2.VideoCapture('website/car-parking.mp4')
 
     def __del__(self):
         self.video.release()
@@ -31,8 +31,8 @@ class VideoCamera(object):
         frameDilate = cv2.dilate(frameMedian, kernel, iterations=1)
 
         for pos in posList:
-            if self.video.get(cv2.CAP_PROP_POS_FRAMES) == self.video.get(cv2.CAP_PROP_FRAME_COUNT):
-                 self.video.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            # if self.video.get(cv2.CAP_PROP_POS_FRAMES) == self.video.get(cv2.CAP_PROP_FRAME_COUNT):
+            #      self.video.set(cv2.CAP_PROP_POS_FRAMES, 0)
             x, y = pos
 
             frameCrop = frameDilate[y:y + height, x:x + width]

@@ -12,7 +12,7 @@ class Car(models.Model):
     plate_num = models.CharField('Plate Number', max_length=20)
 
     def __str__(self):
-        return self.car_model
+        return self.car_model + f' -{self.owner}'
 
 class TimeStamps(models.Model):
     Parker = models.ForeignKey(User, default="",on_delete=models.CASCADE, null=True)
@@ -20,4 +20,5 @@ class TimeStamps(models.Model):
     timestamp = models.TimeField(auto_now_add= True)
     datestamp = models.DateField(auto_now_add= True)
     
-    
+    def __str__(self):
+        return f' {self.Parker}' + self.datestamp.strftime('%d-%m-%Y') + f' {self.timestamp}' 
