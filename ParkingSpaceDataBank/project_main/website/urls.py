@@ -1,6 +1,12 @@
+
 from django.urls import path
 from . import views
+from django.contrib import admin
 
+#Django Admin Customize
+admin.site.site_header = "Vehicular Data Bank Admin"
+admin.site.site_title = "Vehicular Data Bank Admin Portal"
+admin.site.index_title = "Welcome to Vehicular Data Bank Admin Portal"
 
 urlpatterns = [
     path('login_user', views.login_user, name="login_user"),
@@ -17,4 +23,6 @@ urlpatterns = [
 
     # path for video camera
     path('video_feed', views.video_feed, name='video_feed')
+
+    
 ]
